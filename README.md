@@ -38,6 +38,6 @@ Plugin was made in collaboration with [zompi.pl] (http://zompi.pl). You can find
 
    _Example for Windows:_ Control Panel -> System and Security -> System -> Advanced system settings -> Environment Variables -> Uses variables for X -> New...
    
-5. You should enable MultiDex plugin only if you exceeded 64k methods limit. If you have a project that doesn’t need multidexing the build will fail!
+5. You should enable _MultiDex_ plugin only if you exceeded 64k methods limit. If you have a project that doesn’t need multidexing the build will fail!
 
 Plugin icon designed by _Freepik_.
