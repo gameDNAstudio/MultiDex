@@ -14,13 +14,28 @@ The **MultiDex** plugin for [Unreal Engine 4](http://www.unrealengine.com) which
 * Out of the box for Android platform
 * No additional SDKs are needed
 
+## Knowledge
+Plugin was made in collaboration with [zompi.pl] (http://zompi.pl). You can find more info about resolving MultiDex problem [here] (http://zompi.pl/multidexing-in-unreal-engine-4/).
+
 ## Setup
-Copy this folder to the *Plugins* folder located in the main path of your project.
+1. Copy this folder to the *Plugins* folder located in the main path of your project.
 
-![CopyFiles](Resources/CopyFiles.png)
+  ![CopyFiles](Resources/CopyFiles.png)
 
-Enable MultiDex* in *Edit -> Plugins -> Misc -> MultiDex*.
+2. Enable MultiDex in *Edit -> Plugins -> Misc -> MultiDex*.
 
-![EnablePlugin](Resources/EnablePlugin.png)
+  ![EnablePlugin](Resources/EnablePlugin.png)
+
+3. Go to _[PROJECT_FOLDER]/Build/Android/_
+
+  a) If you have already created _custom_rules.xml_ file, simply add:
+  ```xml
+  <import file="custom_rules_multidex.xml" optional="true" />
+  ```
+  b) If you don't have already created _custom_rules.xml_ file, copy it from [[PLUGIN_FOLDER]/Extras/custom_rules.xml](Extras/custom_rules.xml).
+  
+4. Add new environment variable _JAVA_OPTIONS = -Xmx2048m -Xms256m -Xss8m
+
+   _Example for Windows:_ Control Panel -> System and Security -> System -> Advanced system settings -> Environment Variables -> Uses variables for X -> New...
 
 Plugin icon designed by _Freepik_.
