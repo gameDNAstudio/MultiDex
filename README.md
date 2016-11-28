@@ -32,7 +32,7 @@ Plugin was made in collaboration with [zompi.pl] (http://zompi.pl). You can find
   ```xml
   <import file="custom_rules_multidex.xml" optional="true" />
   ```
-  b) If you don't have already created _custom_rules.xml_ file, copy it from [[PLUGIN_FOLDER]/Extras/custom_rules.xml](Extras/custom_rules.xml).
+  b) If you don't have created _custom_rules.xml_ file yet, copy it from [[PLUGIN_FOLDER]/Extras/custom_rules.xml](Extras/custom_rules.xml).
   
 4. Add new environment variable _JAVA_OPTIONS = -Xmx2048m -Xms256m -Xss8m
 
