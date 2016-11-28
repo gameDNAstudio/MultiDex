@@ -28,7 +28,7 @@ Plugin was made in collaboration with [zompi.pl] (http://zompi.pl). You can find
 
 3. Go to _[PROJECT_FOLDER]/Build/Android/_
 
-  a) If you have already created _custom_rules.xml_ file, simply add:
+  a) If you already have created _custom_rules.xml_ file, simply add:
   ```xml
   <import file="custom_rules_multidex.xml" optional="true" />
   ```
