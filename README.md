@@ -12,7 +12,7 @@ The **MultiDex** plugin for [Unreal Engine 4](http://www.unrealengine.com) which
 * Eliminates infamous problem with "64k methods"
 * Ability to make two dex files
 * Out of the box for Android platform
-* No additional SDK are needed
+* No additional SDKs are needed
 
 ## Setup
 Copy this folder to the *Plugins* folder located in the main path of your project.
