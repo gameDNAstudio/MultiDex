@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="custom_rules">
+	
+	<!-- This target is a dex helper that supports multi dexing -->
+	<!-- It will be ran by the -dex" target. Check the rest of the file for details. -->
+	<macrodef name="dex-helper-multi">
+		<element name="external-libs" optional="yes" />
+		<attribute name="nolocals" default="false" />
+		
+		<sequential>
+			
+			<!-- This is standard dexing from the build.xtml -->
+            <property name="out.dex.input.absolute.dir" value="${out.classes.absolute.dir}" />
+            <if>
+                <condition>
+                    <isreference refid="out.dex.jar.input.ref" />
+                </condition>
+                <else>
+                    <path id="out.dex.jar.input.ref">
+                        <path refid="project.all.jars.path" />
+                    </path>
+                </else>
+            </if>
+			
+			<!-- And here we are using the multi-dexing -->
+			<union id="out.dex.jar.input.ref.union">
+				<resources refid="out.dex.jar.input.ref"/>
+			</union>
+			<condition property="verbose.option" value="--verbose" else="">
+				<istrue value="${verbose}" />
+			</condition>
+			<condition property="jumbo.option" value="--force-jumbo" else="">
+				<istrue value="${dex.force.jumbo}" />
+			</condition>
+					
+			<!-- Here we're getting the list of classes that must go into first dex file -->
+			<property name="multidex-main-dex-list"
+				value="multidex-main-dex-list.txt" />
+					
+			<apply executable="${dx}" failonerror="true" parallel="true">
+				<arg value="--dex" />
+				<arg value="--multi-dex" />
+				<arg value="--main-dex-list=${multidex-main-dex-list}"/>
+				<arg value="--output=${out.absolute.dir}" />
+				<arg line="${jumbo.option}" />
+				<arg line="${verbose.option}" />
+				<arg path="${out.classes.absolute.dir}" />
+				<path refid="out.dex.jar.input.ref" />
+				<external-libs />
+			</apply>
+		
+        </sequential>
+
+	</macrodef>
+	
+	<!-- We override the release obfuscation check to remove the out.dex.jar.input.ref overriding for release obfustation -->
+	<target name="-release-obfuscation-check">
+        <echo level="info">proguard.config is ${proguard.config}</echo>
+        <condition property="proguard.enabled" value="true" else="false">
+            <and>
+                <isset property="build.is.mode.release" />
+                <isset property="proguard.config" />
+            </and>
+        </condition>
+    </target>
+	
+	<!-- The post-package-resources is a target to pack our second dex file. -->
+	<!-- It will be ran before the package target. -->
+	<target name="-post-package-resources">
+		<property name="second_dex" value="classes2.dex" />
+		<property name="second_dex_path" value="${out.absolute.dir}/${second_dex}" />
+					
+		<exec executable="${aapt}" dir="${out.absolute.dir}" failonerror="true">
+			<arg line='add -v "${out.absolute.dir}/${resource.package.file.name}" ${second_dex}'/>
+		</exec>
+	</target>
+	
+	<!-- We override the package target so it depends on post-package-resources -->
+	<!-- which needs to be run for second dex -->
+    <target name="-package" depends="-dex, -package-resources, -post-package-resources">		
+        <do-only-if-not-library elseText="Library project: do not package apk..." >
+            <if condition="${build.is.instrumented}">
+                <then>
+                    <package-helper>
+                        <extra-jars>
+                            <jarfile path="${emma.dir}/emma_device.jar" />
+                        </extra-jars>
+                    </package-helper>
+                </then>
+                <else>
+                    <package-helper />
+                </else>
+            </if>
+        </do-only-if-not-library>
+    </target>
+	
+	
+	<!-- This target is to override the default dex target. It's the same as the one from build.xml but uses our dex helper to perform all operations. -->
+	<!-- Converts this project's .class files into .dex files -->
+    <target name="-dex" depends="-compile, -post-compile, -obfuscate">
+        <do-only-if-manifest-hasCode elseText="hasCode = false. Skipping...">
+            <do-only-if-not-library elseText="Library project: do not convert bytecode..." >
+                <if condition="${build.is.instrumented}">
+                    <then>
+                        <dex-helper-multi nolocals="true">
+                            <external-libs>
+                                <fileset file="${emma.dir}/emma_device.jar" />
+                            </external-libs>
+                        </dex-helper-multi>
+                    </then>
+                    <else>
+                        <dex-helper-multi />
+                    </else>
+                </if>
+            </do-only-if-not-library>
+        </do-only-if-manifest-hasCode>
+    </target>
+	
+</project>

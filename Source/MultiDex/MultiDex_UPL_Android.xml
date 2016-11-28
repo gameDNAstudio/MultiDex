@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+    MultiDex
+    Created by Patryk Stepniewski & zompi.pl
+    Copyright (c) 2014-2016 gameDNA. All Rights Reserved.
+-->
+<root xmlns:android="http://schemas.android.com/apk/res/android">
+  <init>
+	<log text="MultiDex init"/>
+  </init>
+
+  <prebuildCopies>
+	<copyDir src="$S(PluginDir)/../../Source/AndroidAddons"
+					dst="$S(BuildDir)" />
+  </prebuildCopies>
+
+  <AARImports>
+	<insert>
+com.android.support,multidex,1.0.1
+	</insert>
+	<insertNewline/>
+  </AARImports>
+
+  <androidManifestUpdates>
+	<addAttribute tag="application" name="android:name" value="android.support.multidex.MultiDexApplication"/>
+  </androidManifestUpdates>
+
+  <proguardAdditions>
+	<insert>
+	  -keep class android.support.multidex.** {
+		  *;
+	  }
+	</insert>
+  </proguardAdditions>
+</root>
