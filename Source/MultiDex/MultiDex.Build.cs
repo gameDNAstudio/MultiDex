@@ -10,7 +10,7 @@ namespace UnrealBuildTool.Rules
 	{
 		public MultiDex(TargetInfo Target)
 		{
-			Definitions.Add("WITH_ANDROIDMANIFESTCONFIGURATOR=1");
+			Definitions.Add("WITH_MULTIDEX=1");
 
 			PrivateIncludePaths.Add("MultiDex/Private");
 
