@@ -24,5 +24,6 @@
   "EnabledByDefault": false,
   "CanContainContent": false,
   "IsBetaVersion": false,
-  "Installed": false
+  "Installed": true,
+  "RequiresBuildPlatform": false
 }
