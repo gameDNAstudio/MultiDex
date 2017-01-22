@@ -1,6 +1,6 @@
 // MultiDex
 // Created by Patryk Stepniewski & zompi.pl
-// Copyright (c) 2014-2016 gameDNA. All Rights Reserved.
+// Copyright (c) 2014-2017 gameDNA. All Rights Reserved.
 
 #include "MultiDexPrivatePCH.h"
 
