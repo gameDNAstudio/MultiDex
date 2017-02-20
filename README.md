@@ -4,7 +4,7 @@
 
 The **MultiDex** plugin for [Unreal Engine 4](http://www.unrealengine.com) which eliminates infamous problem with "64k methods".
 
-* **Current version:** 1.1.0
+* **Current version:** 1.1.1
 * **Binaries compiled for:** Unreal Engine 4.15
 * **Required Unreal Engine 4.15 or above.**
 
