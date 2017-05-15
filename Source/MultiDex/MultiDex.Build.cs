@@ -8,8 +8,10 @@ namespace UnrealBuildTool.Rules
 {
 	public class MultiDex : ModuleRules
 	{
-		public MultiDex(TargetInfo Target)
+		public MultiDex(ReadOnlyTargetRules Target) : base(Target)
 		{
+			PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
+
 			Definitions.Add("WITH_MULTIDEX=1");
 
 			PrivateIncludePaths.Add("MultiDex/Private");
