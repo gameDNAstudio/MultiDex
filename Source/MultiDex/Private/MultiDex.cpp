@@ -3,9 +3,8 @@
 // Copyright (c) 2014-2017 gameDNA. All Rights Reserved.
 
 #include "IMultiDex.h"
-#include "MultiDexPrivatePCH.h"
-
-DEFINE_LOG_CATEGORY(LogMultiDex);
+#include "EngineMinimal.h"
+#include "CoreMinimal.h"
 
 #define LOCTEXT_NAMESPACE "MultiDex"
 
