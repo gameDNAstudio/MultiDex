@@ -15,7 +15,7 @@ The **MultiDex** plugin for [Unreal Engine 4](http://www.unrealengine.com) which
 * No additional SDKs are needed
 
 ## Knowledge
-Plugin was made in collaboration with [zompi.pl] (http://zompi.pl). You can find more info about resolving MultiDex problem [here] (http://zompi.pl/multidexing-in-unreal-engine-4/).
+Plugin was made in collaboration with [zompi.pl](http://zompi.pl). You can find more info about resolving MultiDex problem [here](http://zompi.pl/multidexing-in-unreal-engine-4/).
 
 ## Setup
 1. Copy this folder to the *Plugins* folder located in the main path of your project.
