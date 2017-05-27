@@ -2,7 +2,7 @@
 
 # MultiDex
 
-The **MultiDex** plugin for [Unreal Engine 4](http://www.unrealengine.com) which eliminates infamous problem with "64k methods".
+**MultiDex** eliminates infamous problem with 64k methods and has the ability to make two dex files. It works out-of-the-box for the Android platform so no additional SDKs are needed. No more problems!
 
 * **Current version:** 1.2.0
 * **Binaries compiled for:** Unreal Engine 4.16
