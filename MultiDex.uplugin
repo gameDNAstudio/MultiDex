@@ -1,7 +1,7 @@
 {
   "FileVersion": 3,
   "Version": 1,
-  "VersionName": "1.2.0",
+"VersionName": "1.3.0",
   "FriendlyName": "MultiDex",
   "Description": "Plugin for UE4 which eliminates infamous problem with \"64k methods\"",
   "Category": "Misc",
@@ -9,7 +9,7 @@
   "CreatedByURL": "http://gamednastudio.com",
   "DocsURL": "https://github.com/gameDNAstudio/MultiDex",
   "MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/cce07f5135e84dd98738a330b99760a7",
-  "EngineVersion": "4.16.0",
+  "EngineVersion": "4.17.0",
   "SupportURL": "mailto:support@gamednastudio.com",
   "Modules": [
     {
