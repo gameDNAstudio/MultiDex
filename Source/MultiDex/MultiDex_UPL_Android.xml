@@ -7,18 +7,43 @@
 <root xmlns:android="http://schemas.android.com/apk/res/android">
   <init>
 	<log text="MultiDex init"/>
+	<setBoolFromProperty result="bEnableGradle" ini="Engine" section="/Script/AndroidRuntimeSettings.AndroidRuntimeSettings" property="bEnableGradle" default="false"/>
   </init>
 
   <prebuildCopies>
-	<copyDir src="$S(PluginDir)/../../Source/AndroidAddons"
-					dst="$S(BuildDir)" />
+	<if condition="bEnableGradle">
+	  <false>
+		<copyDir src="$S(PluginDir)/../../Source/AndroidAddons"
+						dst="$S(BuildDir)" />
+	  </false>
+	</if>
   </prebuildCopies>
 
-  <AARImports>
+  <!-- Gradle -->
+  <buildGradleAdditions>
 	<insert>
-com.android.support,multidex,1.0.1
+	  android {
+		defaultConfig {
+		  multiDexEnabled true
+		}
+	  }
+	  
+	  dependencies {
+		compile 'com.android.support:multidex:1.0.1'
+	  }
 	</insert>
-	<insertNewline/>
+  </buildGradleAdditions>
+  
+  <!-- Maven -->
+  <AARImports>
+	<if condition="bEnableGradle">
+	  <false>
+		<insert>
+com.android.support,multidex,1.0.1
+		</insert>
+		<insertNewline/>
+	  </false>
+	</if>
   </AARImports>
 
   <androidManifestUpdates>
