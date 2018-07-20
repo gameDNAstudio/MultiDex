@@ -10,14 +10,14 @@
 	<setBoolFromProperty result="bEnableGradle" ini="Engine" section="/Script/AndroidRuntimeSettings.AndroidRuntimeSettings" property="bEnableGradle" default="false"/>
   </init>
 
-  <prebuildCopies>
+  <resourceCopies>
 	<if condition="bEnableGradle">
 	  <false>
 		<copyDir src="$S(PluginDir)/../../Source/AndroidAddons"
 						dst="$S(BuildDir)" />
 	  </false>
 	</if>
-  </prebuildCopies>
+  </resourceCopies>
 
   <!-- Gradle -->
   <buildGradleAdditions>
