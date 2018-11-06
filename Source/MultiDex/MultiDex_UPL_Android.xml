@@ -29,7 +29,7 @@
 	  }
 	  
 	  dependencies {
-		compile 'com.android.support:multidex:1.0.1'
+		compile 'com.android.support:multidex:1.0.3'
 	  }
 	</insert>
   </buildGradleAdditions>
