@@ -11,8 +11,9 @@ namespace UnrealBuildTool.Rules
 		public MultiDex(ReadOnlyTargetRules Target) : base(Target)
 		{
 			PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
+            PrecompileForTargets = PrecompileTargetsType.Any;
 
-			PublicDefinitions.Add("WITH_MULTIDEX=1");
+            PublicDefinitions.Add("WITH_MULTIDEX=1");
 
 			PrivateIncludePaths.Add("MultiDex/Private");
 
