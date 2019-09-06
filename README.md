@@ -4,9 +4,9 @@
 
 **MultiDex** eliminates infamous problem with 64k methods and has the ability to make two dex files. It works out-of-the-box for the Android platform so no additional SDKs are needed. No more problems!
 
-* **Current version:** 1.8.0
-* **Binaries compiled for:** Unreal Engine 4.22
-* **Required Unreal Engine 4.22 or above.**
+* **Current version:** 1.9.0
+* **Binaries compiled for:** Unreal Engine 4.23
+* **Required Unreal Engine 4.23 or above.**
 
 ## Features
 * Eliminates infamous problem with "64k methods"
